@@ -66,34 +66,26 @@ async function login() {
   const email = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
 
-  const url = "https://script.google.com/macros/s/AKfycbzcE1C8W3652UgImvCFM8SyeEl3uRI1DmQTaXXDxa7B4HOOzobcan5pvrF_jW5ukqdpXA/exec";
+  const url = "https://script.google.com/macros/s/AKfycbzcE1C8W3652UgImvCFM8SyeEl3uRI1DmQTaXXDxa7B4HOOzobcan5pvrF_jW5ukqdpXA/exec?email=" 
+              + encodeURIComponent(email) + 
+              "&password=" + encodeURIComponent(pass);
 
   try {
-    const res = await fetch(url, {
-      method: "POST",
-      body: new URLSearchParams({
-        email: email,
-        password: pass
-      })
-    });
-
+    const res = await fetch(url);
     const data = await res.json();
 
-    console.log(data);
+    console.log(data); // debug
 
-    if (data.status === "success") {
+    if(data.status === "success"){
       localStorage.setItem("loggedIn", "true");
       window.location.href = "course.html";
     } else {
       alert("Invalid Email or Password");
     }
-
   } catch (err) {
-    alert("Server error - check script deployment");
+    alert("Error connecting to server");
     console.error(err);
   }
-}
-</script>
 }
 </script>
 

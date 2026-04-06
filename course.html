@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html>
-<body>
+<head>
+  <title>Course</title>
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+    }
+
+    iframe {
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+  </style>
 
 <script>
-if(localStorage.getItem("loggedIn") !== "true"){
+if (!localStorage.getItem("user")) {
   window.location.href = "login.html";
 }
 </script>
 
-<h1>Welcome to DevOps Course</h1>
+</head>
+<body>
 
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-frameborder="0" allowfullscreen></iframe>
+<h1>AWS DevOps Course</h1>
+
+<iframe width="80%" height="400"
+  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+  allowfullscreen>
+</iframe>
 
 <br><br>
+
 <button onclick="logout()">Logout</button>
 
 <script>
-function logout(){
-  localStorage.removeItem("loggedIn");
+function logout() {
+  localStorage.removeItem("user");
   window.location.href = "login.html";
 }
 </script>
